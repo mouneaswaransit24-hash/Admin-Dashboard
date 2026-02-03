@@ -1,0 +1,96 @@
+
+    :root {
+      --bg-gradient: radial-gradient(circle at top, #1e1b4b, #020617 70%);
+      --glass-bg: rgba(255, 255, 255, 0.08);
+      --glass-border: rgba(255, 255, 255, 0.18);
+      --skeleton-base: rgba(255, 255, 255, 0.1);
+      --skeleton-glow: rgba(255, 255, 255, 0.25);
+      --text-main: #f8fafc;
+      --text-dim: #94a3b8;
+    }
+
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: var(--bg-gradient);
+      padding: 32px;
+      color: var(--text-main);
+    }
+
+    .app {
+      max-width: 1200px;
+      margin: auto;
+      display: grid;
+      gap: 28px;
+      grid-template-areas: 
+        "header"
+        "hero"
+        "kpis"
+        "activity";
+    }
+
+    .glass {
+      background: var(--glass-bg);
+      backdrop-filter: blur(18px);
+      border-radius: 20px;
+      border: 1px solid var(--glass-border);
+      padding: 22px;
+      transition: all 0.4s ease;
+    }
+
+    .loading .skeleton {
+      position: relative;
+      overflow: hidden;
+      background: var(--skeleton-base);
+      border-radius: 8px;
+      color: transparent !important; /* Hide real text while loading */
+    }
+
+    .loading .skeleton::after {
+      content: "";
+      position: absolute;
+      top: 0; right: 0; bottom: 0; left: 0;
+      transform: translateX(-100%);
+      background: linear-gradient(
+        90deg,
+        transparent,
+        var(--skeleton-glow),
+        transparent
+      );
+      animation: shimmer 1.5s infinite;
+    }
+
+    @keyframes shimmer {
+      100% { transform: translateX(100%); }
+    }
+
+    .app:not(.loading) .skeleton {
+      background: transparent;
+      color: inherit;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .loading .skeleton::after {
+        animation: none;
+        background: var(--skeleton-glow);
+        transform: none;
+      }
+    }
+
+    .topbar { display: flex; justify-content: space-between; align-items: center; }
+    .logo { width: 140px; height: 28px; font-weight: bold; font-size: 1.2rem; }
+    .pill { width: 100px; height: 36px; border-radius: 20px; text-align: center; line-height: 36px; font-size: 0.8rem; background: rgba(255,255,255,0.1); }
+
+    .hero-title { width: 200px; height: 20px; font-size: 0.9rem; color: var(--text-dim); }
+    .hero-value { width: 300px; height: 48px; font-size: 2.5rem; font-weight: 800; margin: 10px 0; }
+
+    .kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+    .card-label { width: 100px; height: 16px; font-size: 0.8rem; margin-bottom: 8px; }
+    .card-val { width: 150px; height: 32px; font-size: 1.5rem; font-weight: bold; }
+
+    .activity .row { display: flex; align-items: center; gap: 15px; margin-bottom: 15px; }
+    .avatar { width: 40px; height: 40px; border-radius: 50%; flex-shrink: 0; }
+    .status-text { width: 70%; height: 18px; }

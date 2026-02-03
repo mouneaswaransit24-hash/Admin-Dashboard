@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enterprise Admin Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app loading">
+
+  <header class="topbar glass">
+    <div class="skeleton logo">PRESUVIO</div>
+    <div class="skeleton pill">Admin User</div>
+  </header>
+
+  <section class="hero glass">
+    <div class="skeleton hero-title">TOTAL REVENUE (YTD)</div>
+    <div class="skeleton hero-value">$4,290,122.00</div>
+  </section>
+
+  <section class="kpis">
+    <div class="glass">
+      <div class="skeleton card-label">Active Users</div>
+      <div class="skeleton card-val">12,842</div>
+    </div>
+    <div class="glass">
+      <div class="skeleton card-label">Conversion</div>
+      <div class="skeleton card-val">24.8%</div>
+    </div>
+    <div class="glass">
+      <div class="skeleton card-label">Server Load</div>
+      <div class="skeleton card-val">14ms</div>
+    </div>
+  </section>
+
+  <section class="glass activity">
+    <div class="row">
+      <div class="skeleton avatar"></div>
+      <div class="skeleton status-text">New subscription from Enterprise Client #402</div>
+    </div>
+    <div class="row">
+      <div class="skeleton avatar"></div>
+      <div class="skeleton status-text">Database backup completed successfully at 04:00 AM</div>
+    </div>
+    <div class="row">
+      <div class="skeleton avatar"></div>
+      <div class="skeleton status-text">Security patch v2.4 deployed to 14 nodes</div>
+    </div>
+  </section>
+
+</div>
+
+<script>
+  // Simulate data fetching
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      document.querySelector('.app').classList.remove('loading');
+    }, 3000);
+  });
+</script>
+
+</body>
+</html>
